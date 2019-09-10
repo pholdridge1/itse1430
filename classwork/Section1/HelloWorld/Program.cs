@@ -13,14 +13,47 @@ namespace HelloWorld
             // string description;
             // bool haveSeen;
 
-            while(true)
+            var quit = false;
+            while(!quit)
             {
                 char input = DisplayMenu();
-                if (input == 'A')
-                    AddMovie ();
-                else if (input == 'Q')
-                    break;
+                switch (input)
+                {
+                    // Fallthrough allowed only if case is empty
+                    case 'a':
+                    case 'A': AddMovie (); break;
+
+                    // Must have break/return at end of each case
+                    case 'D': DisplayMovie (); break;
+                    case 'R': RemoveMovie (); break;
+                    case 'Q':
+                    {
+                        quit = true;
+                        break;
+                    }
+
+                    default: Console.WriteLine ("Not supported"); break;
+                };
+
+                //if (input == 'A')
+                //    AddMovie ();
+                //else if (input == 'D')
+                //    DisplayMovie ();
+                //else if (input == 'R')
+                //    RemoveMovie ();
+                //else if (input == 'Q')
+                //    break;
             };          
+        }
+
+        private static void RemoveMovie ()
+        {
+            // Confirm removal
+            if (!ReadBoolean ($"Are you sure you want to remove {title}?"))
+                return;
+
+            // Remove movie
+            title = null;
         }
 
         static void AddMovie()
@@ -45,6 +78,12 @@ namespace HelloWorld
 
         static void DisplayMovie()
         {
+            if(String.IsNullOrEmpty(title))
+            {
+                Console.WriteLine ("No movies");
+                return;
+            };
+
             // Title, description, release year, run length, haveSeen
             Console.WriteLine (title);
             Console.WriteLine (description);
@@ -62,6 +101,9 @@ namespace HelloWorld
 
             // 4) String interpolation
             Console.WriteLine ($"Seen it? {haveSeen}");
+
+            // Seperate movies
+            Console.WriteLine ("".PadLeft (50, '-'));
         }
 
         static int ReadInt32 (string message)
@@ -103,6 +145,7 @@ namespace HelloWorld
             {
                 Console.WriteLine("(A)dd Movie");
                 Console.WriteLine("(D)isplay Movie");
+                Console.WriteLine("(R)emove Movie");
                 Console.WriteLine("(Q)uit");
 
                 string input = Console.ReadLine ();
@@ -110,7 +153,7 @@ namespace HelloWorld
                 // Lower case
                 input = input.ToLower();
 
-                if (String.Compare(input, "a") == 0)
+                if (String.Compare (input, "a") == 0)
                 {
                     return 'A';
                 } else if (input == "q")
@@ -119,8 +162,10 @@ namespace HelloWorld
                 } else if (input == "d")
                 {
                     return 'D';
-                }
-                else
+                } else if (input == "r")
+                {
+                    return 'R';
+                } else
                 {
                     Console.WriteLine ("Invalid input");
                 }
@@ -177,6 +222,26 @@ namespace HelloWorld
             string[] nameParts = name.Split(' ');
          }
 
+        static void DemoString()
+        {
+            string str = null;
+
+            // Checking for null or empty string
+            if(str != null && str != "")
+                str = str.ToLower();
+
+            //Length - NO
+            if (str != null && str.Length == 0)
+                str = str.ToLower ();
+
+            //Empty - NO
+            if (str != null && str != String.Empty)
+                str = str.ToLower ();
+
+            //Correct approach
+            if (!String.IsNullOrEmpty (str))
+                str = str.ToLower ();
+        }
         //Don't do this outside lab 1
         static string title;
         static string description;
