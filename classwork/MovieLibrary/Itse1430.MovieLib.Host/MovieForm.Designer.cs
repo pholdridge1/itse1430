@@ -33,14 +33,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtReleaseYear = new System.Windows.Forms.TextBox();
+            this.cbRating = new System.Windows.Forms.ComboBox();
+            this.txtRunLength = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.chkHaveSeen = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -88,91 +88,103 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Description:";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtName.Location = new System.Drawing.Point(181, 51);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 5;
             // 
-            // textBox2
+            // txtReleaseYear
             // 
-            this.textBox2.Location = new System.Drawing.Point(181, 150);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtReleaseYear.Location = new System.Drawing.Point(181, 150);
+            this.txtReleaseYear.Name = "txtReleaseYear";
+            this.txtReleaseYear.Size = new System.Drawing.Size(100, 20);
+            this.txtReleaseYear.TabIndex = 6;
             // 
-            // comboBox1
+            // cbRating
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 207);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cbRating.FormattingEnabled = true;
+            this.cbRating.Items.AddRange(new object[] {
+            "G",
+            "PG",
+            "PG-13",
+            "R"});
+            this.cbRating.Location = new System.Drawing.Point(181, 207);
+            this.cbRating.Name = "cbRating";
+            this.cbRating.Size = new System.Drawing.Size(121, 21);
+            this.cbRating.TabIndex = 7;
             // 
-            // textBox3
+            // txtRunLength
             // 
-            this.textBox3.Location = new System.Drawing.Point(181, 276);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtRunLength.Location = new System.Drawing.Point(181, 276);
+            this.txtRunLength.Name = "txtRunLength";
+            this.txtRunLength.Size = new System.Drawing.Size(100, 20);
+            this.txtRunLength.TabIndex = 8;
             // 
-            // textBox4
+            // txtDescription
             // 
-            this.textBox4.Location = new System.Drawing.Point(395, 74);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(293, 173);
-            this.textBox4.TabIndex = 9;
+            this.txtDescription.Location = new System.Drawing.Point(395, 74);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(293, 173);
+            this.txtDescription.TabIndex = 9;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(469, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(469, 276);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(565, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(565, 276);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // checkBox1
+            // chkHaveSeen
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(181, 77);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Have Seen?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkHaveSeen.AutoSize = true;
+            this.chkHaveSeen.Location = new System.Drawing.Point(181, 77);
+            this.chkHaveSeen.Name = "chkHaveSeen";
+            this.chkHaveSeen.Size = new System.Drawing.Size(86, 17);
+            this.chkHaveSeen.TabIndex = 12;
+            this.chkHaveSeen.Text = "Have Seen?";
+            this.chkHaveSeen.UseVisualStyleBackColor = true;
             // 
             // MovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 343);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(756, 356);
+            this.Controls.Add(this.chkHaveSeen);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtRunLength);
+            this.Controls.Add(this.cbRating);
+            this.Controls.Add(this.txtReleaseYear);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MovieForm";
-            this.Text = "MovieForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Movie Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,13 +197,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtReleaseYear;
+        private System.Windows.Forms.ComboBox cbRating;
+        private System.Windows.Forms.TextBox txtRunLength;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chkHaveSeen;
     }
 }
