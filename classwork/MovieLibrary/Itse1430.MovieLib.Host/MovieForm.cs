@@ -22,12 +22,13 @@ namespace Itse1430.MovieLib.Host
         private void BtnSave_Click(object sender, EventArgs e)
         {
             var movie = new Movie ();
-            movie.title = txtName.Text;
-            movie.description = txtDescription.Text;
-            movie.releaseYear = GetAsInt32(txtReleaseYear);
-            movie.runLength = GetAsInt32(txtRunLength);
-            movie.rating = cbRating.Text;
-            movie.haveSeen = chkHaveSeen.Checked;
+            // movie.set_title(_txtName.Text);
+            movie.Title = _txtName.Text;
+            movie.Description = _txtDescription.Text;
+            movie.ReleaseYear = GetAsInt32(_txtReleaseYear);
+            movie.RunLength = GetAsInt32(_txtRunLength);
+            movie.Rating = cbRating.Text;
+            movie.HaveSeen = chkHaveSeen.Checked;
 
             // Validate
             var message = movie.Validate();

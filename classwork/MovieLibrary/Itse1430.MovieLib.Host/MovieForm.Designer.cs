@@ -33,11 +33,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtReleaseYear = new System.Windows.Forms.TextBox();
+            this._txtName = new System.Windows.Forms.TextBox();
+            this._txtReleaseYear = new System.Windows.Forms.TextBox();
             this.cbRating = new System.Windows.Forms.ComboBox();
-            this.txtRunLength = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
+            this._txtRunLength = new System.Windows.Forms.TextBox();
+            this._txtDescription = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkHaveSeen = new System.Windows.Forms.CheckBox();
@@ -88,19 +88,19 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Description:";
             // 
-            // txtName
+            // _txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(181, 51);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 5;
+            this._txtName.Location = new System.Drawing.Point(181, 51);
+            this._txtName.Name = "_txtName";
+            this._txtName.Size = new System.Drawing.Size(100, 20);
+            this._txtName.TabIndex = 5;
             // 
-            // txtReleaseYear
+            // _txtReleaseYear
             // 
-            this.txtReleaseYear.Location = new System.Drawing.Point(181, 150);
-            this.txtReleaseYear.Name = "txtReleaseYear";
-            this.txtReleaseYear.Size = new System.Drawing.Size(100, 20);
-            this.txtReleaseYear.TabIndex = 6;
+            this._txtReleaseYear.Location = new System.Drawing.Point(181, 150);
+            this._txtReleaseYear.Name = "_txtReleaseYear";
+            this._txtReleaseYear.Size = new System.Drawing.Size(100, 20);
+            this._txtReleaseYear.TabIndex = 6;
             // 
             // cbRating
             // 
@@ -115,20 +115,20 @@
             this.cbRating.Size = new System.Drawing.Size(121, 21);
             this.cbRating.TabIndex = 7;
             // 
-            // txtRunLength
+            // _txtRunLength
             // 
-            this.txtRunLength.Location = new System.Drawing.Point(181, 276);
-            this.txtRunLength.Name = "txtRunLength";
-            this.txtRunLength.Size = new System.Drawing.Size(100, 20);
-            this.txtRunLength.TabIndex = 8;
+            this._txtRunLength.Location = new System.Drawing.Point(181, 276);
+            this._txtRunLength.Name = "_txtRunLength";
+            this._txtRunLength.Size = new System.Drawing.Size(100, 20);
+            this._txtRunLength.TabIndex = 8;
             // 
-            // txtDescription
+            // _txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(395, 74);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(293, 173);
-            this.txtDescription.TabIndex = 9;
+            this._txtDescription.Location = new System.Drawing.Point(395, 74);
+            this._txtDescription.Multiline = true;
+            this._txtDescription.Name = "_txtDescription";
+            this._txtDescription.Size = new System.Drawing.Size(293, 173);
+            this._txtDescription.TabIndex = 9;
             // 
             // btnSave
             // 
@@ -168,11 +168,11 @@
             this.Controls.Add(this.chkHaveSeen);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtRunLength);
+            this.Controls.Add(this._txtDescription);
+            this.Controls.Add(this._txtRunLength);
             this.Controls.Add(this.cbRating);
-            this.Controls.Add(this.txtReleaseYear);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this._txtReleaseYear);
+            this.Controls.Add(this._txtName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -197,11 +197,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtReleaseYear;
+        private System.Windows.Forms.TextBox _txtName;
+        private System.Windows.Forms.TextBox _txtReleaseYear;
         private System.Windows.Forms.ComboBox cbRating;
-        private System.Windows.Forms.TextBox txtRunLength;
-        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox _txtRunLength;
+        private System.Windows.Forms.TextBox _txtDescription;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox chkHaveSeen;
