@@ -40,7 +40,7 @@ namespace Itse1430.MovieLib.Host
 
             DialogResult = DialogResult.OK;
             Close();
-
+             
         }
 
         private int GetAsInt32 (TextBox control)
