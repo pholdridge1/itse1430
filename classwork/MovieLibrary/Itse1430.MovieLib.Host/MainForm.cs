@@ -30,7 +30,10 @@ namespace Itse1430.MovieLib.Host
         }
 
         private Movie _movie;
-
+        private Movie GetSelectedMovie()
+        {
+            return _movie;
+        }
         private void OnMovieEdit ( object sender, EventArgs e )
         {
 
@@ -38,17 +41,18 @@ namespace Itse1430.MovieLib.Host
 
         private void OnMovieDelete ( object sender, EventArgs e )
         {
-
+            var movie = GetSelectedMovie ();
         }
 
         private void OnFileExit ( object sender, EventArgs e )
         {
-
+            Close();
         }
 
         private void OnHelpAbout ( object sender, EventArgs e )
         {
-
+            var form = new AboutForm();
+            form.ShowDialog (this);
         }
     }
 }
