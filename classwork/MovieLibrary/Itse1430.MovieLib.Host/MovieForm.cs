@@ -17,43 +17,61 @@ namespace Itse1430.MovieLib.Host
             InitializeComponent ();
         }
 
-        public Movie Movie;
+        // Must be a property...
+        public Movie Movie { get; set; }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        protected override void OnLoad ( EventArgs e )
+        {
+            // Call base type
+            // OnLoad(e);
+            base.OnLoad(e);
+
+            if (Movie != null)
+            {
+               _txtName.Text = Movie.Title;
+               _txtDescription.Text = Movie.Description;
+               _txtReleaseYear.Text = Movie.ReleaseYear.ToString();
+               _txtRunLength.Text = Movie.RunLength.ToString ();
+               cbRating.Text = Movie.Rating;
+               chkHaveSeen.Checked = Movie.HaveSeen;
+            };
+        }
+
+        private void OnSave ( object sender, EventArgs e )
         {
             var movie = new Movie ();
-            // movie.set_title(_txtName.Text);
+            //movie.set_title(_txtName.Text);
             movie.Title = _txtName.Text;
             movie.Description = _txtDescription.Text;
-            movie.ReleaseYear = GetAsInt32(_txtReleaseYear);
-            movie.RunLength = GetAsInt32(_txtRunLength);
+            movie.ReleaseYear = GetAsInt32 (_txtReleaseYear);
+            movie.RunLength = GetAsInt32 (_txtRunLength);
             movie.Rating = cbRating.Text;
             movie.HaveSeen = chkHaveSeen.Checked;
 
-            // Validate
-            var message = movie.Validate();
+            //Validate
+            var message = movie.Validate ();
             if (!String.IsNullOrEmpty (message))
-                return;     // TODO: Error
+                return;  //TODO: Error
 
-            // TODO: Save it
+            //TODO: Save it
             Movie = movie;
 
             DialogResult = DialogResult.OK;
-            Close();
-             
+            Close ();
         }
 
-        private int GetAsInt32 (TextBox control)
+        private int GetAsInt32 ( TextBox control )
         {
             if (Int32.TryParse (control.Text, out var result))
                 return result;
+
             return 0;
         }
 
         private void BtnCancel_Click ( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
-            Close();
+            Close ();
         }
     }
 }
