@@ -24,16 +24,16 @@ namespace Itse1430.MovieLib.Host
             //form.Show();
 
             //Show the new movie form modally
-            if (form.ShowDialog (this) == DialogResult.OK)
-                //TODO: Save it
-                _movie = form.Movie;
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                AddMovie(form.Movie);
+                UpdateUI();
+            }
         }
-
-        private Movie _movie;
 
         private Movie GetSelectedMovie ()
         {
-            return _movie;
+            return _movies[0];
         }
 
         private void OnMovieEdit ( object sender, EventArgs e )
@@ -47,7 +47,12 @@ namespace Itse1430.MovieLib.Host
             form.Movie = movie;
 
             if (form.ShowDialog (this) == DialogResult.OK)
-                _movie = form.Movie;
+            {
+                // TODO: Change to update
+                RemoveMovie(movie);
+                AddMovie(form.Movie);
+                UpdateUI();
+            }
         }
 
         private void OnMovieDelete ( object sender, EventArgs e )
@@ -62,8 +67,9 @@ namespace Itse1430.MovieLib.Host
             if (result != DialogResult.Yes)
                 return;
 
-            //TODO: Delete it
-            _movie = null;
+            // Delete it
+            RemoveMovie(movie);
+            UpdateUI();
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -76,5 +82,44 @@ namespace Itse1430.MovieLib.Host
             var form = new AboutForm ();
             form.ShowDialog (this);
         }
+
+        private void UpdateUI ()
+        {
+            var movies = GetMovies();
+            _lstMovies.Items.AddRange(movies);
+        }
+
+        private void AddMovie ( Movie movie )
+        {
+            // Add to array
+            for (var index = 0; index < _movies.Length; ++index)
+            {
+                if (_movies[index] == null)
+                {
+                    _movies[index] = movie;
+                    return;
+                };
+            };
+        }
+
+        private void RemoveMovie ( Movie movie )
+        {
+            // Remove from array
+            for( var index = 0; index < _movies.Length; ++index)
+            {
+                if (_movies[index] == movie)
+                {
+                    _movies[index] = null;
+                    return;
+                };
+            };
+        }
+
+        private Movie[] GetMovies()
+        {
+            // TODO: Filter out empty movies
+            return _movies;
+        }
+        private Movie[] _movies = new Movie[100];
     }
 }
