@@ -27,5 +27,11 @@ namespace CharacterCreator.Winforms
             var form = new AboutForm();
             form.ShowDialog(this);
         }
+
+        private void OnCharacterNew ( object sender, EventArgs e )
+        {
+            var form = new CharacterForm();
+            form.ShowDialog(this);
+        }
     }
 }

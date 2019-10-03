@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Character Creator")]
-[assembly: AssemblyDescription("ITSE1430")]
+[assembly: AssemblyTitle("CharacterCreator")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Philip Oldridge")]
-[assembly: AssemblyProduct("Character Creator")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("CharacterCreator")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8b3fea00-779f-41dc-97fc-567941753875")]
+[assembly: Guid("88140fa7-5aee-4279-a8fa-bd75e22219e2")]
 
 // Version information for an assembly consists of the following four values:
 //
