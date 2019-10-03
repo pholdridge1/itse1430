@@ -8,7 +8,7 @@ namespace CharacterCreator
 {
     public class Character
     {
-        #region Properties
+        #region Properties...
         public string Name
         {
             get { return _name ?? ""; }
@@ -64,7 +64,7 @@ namespace CharacterCreator
             return "";
         }
 
-        #region Private Fields
+        #region Private Fields...
 
         private string _name = "";
         private string _profession = "";

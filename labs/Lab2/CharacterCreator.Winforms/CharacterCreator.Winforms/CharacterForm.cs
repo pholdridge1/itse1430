@@ -17,6 +17,32 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            if (Character != null)
+            {
+                _txtCharacterName.Text = Character.Name;
+                cbProfession.Text = Character.Profession;
+                cbRace.Text = Character.Race;
+                _txtStamina.Text = Character.Stamina.ToString();
+                _txtAgility.Text = Character.Agility.ToString();
+                _txtIntellect.Text = Character.Intellect.ToString();
+                _txtSpirit.Text = Character.Spirit.ToString();
+                _txtStrength.Text = Character.Strength.ToString();
+            }
+            else
+            {
+                var character = new Character();
+                _txtStamina.Text = character.Stamina.ToString();
+                _txtAgility.Text = character.Agility.ToString();
+                _txtIntellect.Text = character.Intellect.ToString();
+                _txtSpirit.Text = character.Spirit.ToString();
+                _txtStrength.Text = character.Strength.ToString();
+            }
+        }
+
         public Character Character { get; set; }
 
         private void OnSave ( object sender, EventArgs e )
@@ -24,14 +50,14 @@ namespace CharacterCreator.Winforms
             // Save new character
             var character = new Character();
 
-            character.Name = txtCharacterName.Text;
+            character.Name = _txtCharacterName.Text;
             character.Race = cbRace.Text;
             character.Profession = cbProfession.Text;
-            character.Stamina = GetAsInt32(txtStamina);
-            character.Agility = GetAsInt32(txtAgility);
-            character.Intellect = GetAsInt32(txtIntellect);
-            character.Spirit = GetAsInt32(txtSpirit);
-            character.Strength = GetAsInt32(txtStrength);
+            character.Stamina = GetAsInt32(_txtStamina);
+            character.Agility = GetAsInt32(_txtAgility);
+            character.Intellect = GetAsInt32(_txtIntellect);
+            character.Spirit = GetAsInt32(_txtSpirit);
+            character.Strength = GetAsInt32(_txtStrength);
 
             // Validate
             var message = character.Validate();
@@ -53,6 +79,12 @@ namespace CharacterCreator.Winforms
                 return result;
 
             return 0;
+        }
+
+        private void OnCancel ( object sender, EventArgs e )
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

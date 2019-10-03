@@ -186,6 +186,7 @@ namespace Itse1430.MovieLib.Host
 
             return movies;
         }
+
         private Movie[] _movies = new Movie[100];
     }
 }
