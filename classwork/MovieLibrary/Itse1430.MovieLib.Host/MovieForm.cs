@@ -51,7 +51,11 @@ namespace Itse1430.MovieLib.Host
             //Validate
             var message = movie.Validate ();
             if (!String.IsNullOrEmpty (message))
-                return;  //TODO: Error
+            {
+                MessageBox.Show(this, message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            };
+
 
             //TODO: Save it
             Movie = movie;
@@ -72,6 +76,47 @@ namespace Itse1430.MovieLib.Host
         {
             DialogResult = DialogResult.Cancel;
             Close ();
+        }
+
+        private void OnValidatingName ( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            // Name is required
+            if (control.Text == "")
+            {
+                e.Cancel = true;
+                _errors.SetError(control, "Name is required");
+            };
+        }
+
+        private void OnValidatingReleaseYear ( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            // ReleaseYear > 1900
+            var value = GetAsInt32(control);
+            if (value < 1900)
+                e.Cancel = true;
+        }
+
+        private void OnValidatingRunLength ( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            // Run length > 0
+            var value = GetAsInt32(control);
+            if (value < 0)
+                e.Cancel = true;
+        }
+
+        private void OnValidatingRating ( object sender, CancelEventArgs e )
+        {
+            var control = sender as ComboBox;
+
+            // Text is required
+            if (control.SelectedText == "")
+                e.Cancel = true;
         }
     }
 }
