@@ -35,10 +35,15 @@ namespace Itse1430.MovieLib.Host
                cbRating.Text = Movie.Rating;
                chkHaveSeen.Checked = Movie.HaveSeen;
             };
+
+            ValidateChildren();
         }
 
         private void OnSave ( object sender, EventArgs e )
         {
+            if (!ValidateChildren())
+                return;
+
             var movie = new Movie ();
             //movie.set_title(_txtName.Text);
             movie.Title = _txtName.Text;
@@ -87,7 +92,11 @@ namespace Itse1430.MovieLib.Host
             {
                 e.Cancel = true;
                 _errors.SetError(control, "Name is required");
-            };
+            }
+            else
+            {
+                _errors.SetError(control, "");
+            }
         }
 
         private void OnValidatingReleaseYear ( object sender, CancelEventArgs e )
@@ -97,7 +106,14 @@ namespace Itse1430.MovieLib.Host
             // ReleaseYear > 1900
             var value = GetAsInt32(control);
             if (value < 1900)
+            {
                 e.Cancel = true;
+                _errors.SetError(control, "Release year must be >= 1900");
+            }
+            else
+            {
+                _errors.SetError(control, "");
+            }
         }
 
         private void OnValidatingRunLength ( object sender, CancelEventArgs e )
@@ -107,7 +123,14 @@ namespace Itse1430.MovieLib.Host
             // Run length > 0
             var value = GetAsInt32(control);
             if (value < 0)
+            {
                 e.Cancel = true;
+                _errors.SetError(control, "Run length must be >=");
+            }
+            else
+            {
+                _errors.SetError(control, "");
+            }
         }
 
         private void OnValidatingRating ( object sender, CancelEventArgs e )
@@ -115,8 +138,15 @@ namespace Itse1430.MovieLib.Host
             var control = sender as ComboBox;
 
             // Text is required
-            if (control.SelectedText == "")
+            if (control.SelectedIndex == -1)
+            {
                 e.Cancel = true;
+                _errors.SetError(control, "Rating is required");
+            }
+            else
+            {
+                _errors.SetError(control, "");
+            }
         }
     }
 }
