@@ -33,7 +33,7 @@ namespace Itse1430.MovieLib
                     Id = ++_id,
                     Title = "Wreck-It Ralph",
                     ReleaseYear = 2014,
-                    Rating = "PG",
+                    Rating = "PG", 
                 }
         };
             //var movie = new Movie()
