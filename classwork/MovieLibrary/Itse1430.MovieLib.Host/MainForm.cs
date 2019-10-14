@@ -10,11 +10,13 @@ namespace Itse1430.MovieLib.Host
         public MainForm ()
         {
             InitializeComponent ();
+        }
 
-            //Itse1430.MovieLib.Movie
-            Movie movie = new Movie ();
-            movie.Title = "Jaws";
-            movie.Description = movie.Title;
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            UpdateUI();
         }
 
         //Called when Movie\Add selected
