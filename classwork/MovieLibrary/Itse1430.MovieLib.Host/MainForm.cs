@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Itse1430.MovieLib.Host
@@ -15,6 +16,12 @@ namespace Itse1430.MovieLib.Host
         protected override void OnLoad ( EventArgs e )
         {
             base.OnLoad(e);
+
+            // Seed movies
+            _movies = new MemoryMovieDatabase();
+            var count = _movies.GetAll().Count();
+            if (count == 0)
+                MovieDatabaseExtensions.Seed(_movies);
 
             UpdateUI();
         }
@@ -140,12 +147,10 @@ namespace Itse1430.MovieLib.Host
             //_lstMovies.Items.AddRange(movies);
 
             // For more complex bindings
-            _lstMovies.DataSource = movies;
+            _lstMovies.DataSource = movies.ToArray();
         }
 
-
-
         // private Movie[] _movies = new Movie[100];
-        private MovieDatabase _movies = new MovieDatabase();
+        private IMovieDatabase _movies;
     }
 }
