@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Itse1430.MovieLib
@@ -11,33 +12,35 @@ namespace Itse1430.MovieLib
         {
             // List Code
             if (movie == null)
-                return null;
+                throw new ArgumentNullException(nameof(movie));
 
             //var context = new ValidationContext(movie);
             //var results = movie.Validate(context);
             var results = ObjectValidator.TryValidateObject(movie);
             if (results.Count() > 0)
-                return null;
+                // return null;
+                throw new ValidationException(results.FirstOrDefault().ErrorMessage);
 
             // Name must be unique
             var exisiting = GetByNameCore(movie.Title);
             if (exisiting != null)
-                return null;
+                // return null;
+                throw new InvalidOperationException("Movie must be unique.");
 
             return AddCore(movie);
         }
 
         public void Remove ( int id )
         {
-            //TODO: Validate id
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0");
             RemoveCore(id);
         }
 
         public Movie Get ( int id )
         {
-            //TODO: Validate
             if (id <= 0)
-                return null;
+                throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0");
 
             return GetCore(id);
         }
@@ -49,23 +52,22 @@ namespace Itse1430.MovieLib
 
         public void Update ( int id, Movie newMovie )
         {
-            // Validate
+            //Validate
             if (id <= 0)
-                return;
+                throw new ArgumentOutOfRangeException(nameof(id),
+                                                      "Id must be > 0.");
             if (newMovie == null)
-                return;
+                throw new ArgumentNullException(nameof(newMovie));
 
-            // if(!String.IsNullOrEmpty(movie.Validate()))
-            //var context = new ValidationContext(newMovie);
-            //var results = newMovie.Validate(context);
             var results = ObjectValidator.TryValidateObject(newMovie);
             if (results.Count() > 0)
-                return;
+                throw new ValidationException(
+                            results.FirstOrDefault().ErrorMessage);
 
-            // Must be unique
+            //Must be unique
             var existing = GetByNameCore(newMovie.Title);
             if (existing != null && existing.Id != id)
-                return;
+                throw new InvalidOperationException("Movie must be unique.");
 
             UpdateCore(id, newMovie);
         }
