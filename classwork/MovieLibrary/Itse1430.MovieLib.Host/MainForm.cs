@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows.Forms;
+using Itse1430.MovieLib.IO;
 
 namespace Itse1430.MovieLib.Host
 {
@@ -18,7 +19,7 @@ namespace Itse1430.MovieLib.Host
             base.OnLoad(e);
 
             // Seed movies
-            _movies = new MemoryMovieDatabase();
+            _movies = new FileMovieDatabase(@"movies.csv");
             var count = _movies.GetAll().Count();
             if (count == 0)
                 _movies.Seed();
@@ -37,8 +38,23 @@ namespace Itse1430.MovieLib.Host
             //Show the new movie form modally
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                _movies.Add(form.Movie);
-                UpdateUI();
+                try
+                {
+                    _movies.Add(form.Movie);
+                    UpdateUI();
+                } catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } catch (ValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } catch (Exception ex)
+                {
+                    MessageBox.Show("Save failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // throw;      // Rethrow existing exception
+                    // throw ex;   // Throwing a new exception
+                }
             }
         }
 
@@ -51,7 +67,7 @@ namespace Itse1430.MovieLib.Host
             //Movie or null
             return item as Movie;
 
-            _lstMovies.SelectedItems.OfType<Movie>();
+            //_lstMovies.SelectedItems.OfType<Movie>();
 
             #region Typecasting Demo
             ////Other approaches
